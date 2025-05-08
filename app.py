@@ -40,7 +40,7 @@ def process_files(uploaded_files):
     chunks = text_splitter.split_text(text)
     
     # Create vector store with cosine similarity
-    embeddings = OpenAIEmbeddings()
+    embeddings = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
     vectorstore = Chroma.from_texts(
         chunks, 
         embeddings,
